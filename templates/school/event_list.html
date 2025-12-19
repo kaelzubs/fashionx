@@ -1,0 +1,18 @@
+{% extends 'school/base.html' %}
+{% block content %}
+<h2>Events & Workshops</h2>
+<div class="list-group">
+  {% for e in events %}
+  <a class="list-group-item list-group-item-action" href="{% url 'school:event_detail' e.slug %}">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{ e.title }}</h5>
+      <small>{{ e.date }}</small>
+    </div>
+    <p class="mb-1">{{ e.details|truncatewords:25 }}</p>
+    <small>{{ e.location }} · Seats: {{ e.seats }}</small>
+  </a>
+  {% empty %}
+  <p>No events yet.</p>
+  {% endfor %}
+</div>
+{% endblock %}

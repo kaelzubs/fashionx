@@ -1,0 +1,4 @@
+body { font-family: "Segoe UI", Tahoma, sans-serif; }
+.jumbotron { background: #f8f9fa; }
+.card img { object-fit: cover; height: 200px; }
+footer h5 { margin-bottom: .75rem; }

@@ -1,0 +1,25 @@
+{% extends 'school/base.html' %}
+{% block content %}
+<h2>Programs</h2>
+<div class="row">
+  {% for p in programs %}
+  <div class="col-md-4 mb-4">
+    <div class="card h-100">
+      {% if p.cover_image %}<img class="card-img-top" src="{{ p.cover_image.url }}" alt="{{ p.title }}">{% endif %}
+      <div class="card-body">
+        <h5 class="card-title">{{ p.title }}</h5>
+        <p class="card-text">{{ p.description|truncatewords:30 }}</p>
+        <ul class="list-unstyled">
+          <li><strong>Level:</strong> {{ p.get_level_display }}</li>
+          <li><strong>Duration:</strong> {{ p.duration_weeks }} weeks</li>
+          <li><strong>Fee:</strong> ₦{{ p.fee }}</li>
+        </ul>
+      </div>
+      <div class="card-footer bg-white">
+        <a href="{% url 'school:program_detail' p.slug %}" class="btn btn-outline-primary btn-block">Details</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

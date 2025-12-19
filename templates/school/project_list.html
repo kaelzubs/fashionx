@@ -1,0 +1,18 @@
+{% extends 'school/base.html' %}
+{% block content %}
+<h2>Student Portfolio</h2>
+<div class="row">
+  {% for pr in projects %}
+  <div class="col-md-3 mb-4">
+    <div class="card">
+      <img class="card-img-top" src="{{ pr.image.url }}" alt="{{ pr.title }}">
+      <div class="card-body">
+        <strong>{{ pr.title }}</strong>
+        {% if pr.student_name %}<p class="mb-0 text-muted">{{ pr.student_name }}</p>{% endif %}
+        {% if pr.description %}<p class="mt-2">{{ pr.description|truncatewords:20 }}</p>{% endif %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

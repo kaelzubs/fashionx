@@ -1,0 +1,24 @@
+{% extends 'school/base.html' %}
+{% block content %}
+<div class="row">
+  <div class="col-md-8">
+    <h2>{{ event.title }}</h2>
+    {% if event.banner %}<img src="{{ event.banner.url }}" class="img-fluid mb-3" alt="{{ event.title }}">{% endif %}
+    <p>{{ event.details|linebreaks }}</p>
+  </div>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <p><strong>Date:</strong> {{ event.date }}</p>
+        <p><strong>Location:</strong> {{ event.location }}</p>
+        <p><strong>Seats:</strong> {{ event.seats }}</p>
+        {% if event.is_open %}
+        <a href="{% url 'school:contact' %}" class="btn btn-success btn-block">Register interest</a>
+        {% else %}
+        <button class="btn btn-secondary btn-block" disabled>Registration closed</button>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

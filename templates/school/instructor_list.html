@@ -1,0 +1,23 @@
+{% extends 'school/base.html' %}
+{% block content %}
+<h2>Instructors</h2>
+<div class="row">
+  {% for i in instructors %}
+  <div class="col-md-4 mb-4">
+    <div class="card h-100 text-center">
+      {% if i.photo %}<img class="card-img-top" src="{{ i.photo.url }}" alt="{{ i.name }}">{% endif %}
+      <div class="card-body">
+        <h5 class="card-title">{{ i.name }}</h5>
+        <p class="text-muted">{{ i.specialization }}</p>
+        <p>{{ i.bio|truncatewords:30 }}</p>
+        <p>
+          {% if i.instagram %}<a href="{{ i.instagram }}">Instagram</a> {% endif %}
+          {% if i.facebook %}· <a href="{{ i.facebook }}">Facebook</a> {% endif %}
+          {% if i.linkedin %}· <a href="{{ i.linkedin }}">LinkedIn</a>{% endif %}
+        </p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

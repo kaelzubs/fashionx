@@ -1,0 +1,10 @@
+{% extends 'school/base.html' %}
+{% block content %}
+<h2>{{ course.title }}</h2>
+<p class="text-muted">Part of <a href="{% url 'school:program_detail' course.program.slug %}">{{ course.program.title }}</a></p>
+<p>{{ course.summary }}</p>
+{% if course.syllabus %}
+<h4>Syllabus</h4>
+<p>{{ course.syllabus|linebreaks }}</p>
+{% endif %}
+{% endblock %}
