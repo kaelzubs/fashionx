@@ -134,8 +134,6 @@ STORAGES = {
     },
 }
 
-
-
 # For dev only
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
